@@ -47,8 +47,6 @@ public class SecurityConfig {
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers(
 //                                필터 체인(인증)을 제외할 경로
-                                "/login/oauth2/**",
-                                "/oauth2/**",
                                 "/api/auth/**",
                                 "/member/join",
                                 "/member/login",
