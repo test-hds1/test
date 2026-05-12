@@ -77,22 +77,10 @@ jobs:
             -e NAVER_CLIENT_ID=${{ secrets.NAVER_CLIENT_ID }} \
             -e NAVER_CLIENT_SECRET=${{ secrets.NAVER_CLIENT_SECRET }} \
             app
-        EOF
 
     - name: Clean up dangling images
       if: success()
       run: |
         ssh -i ~/.ssh/id_rsa ${{ secrets.EC2_USER }}@$HOST << 'EOF'
           docker image prune -f
-          docker container prune -f
-        EOF
-
-
-
-
-
-
-
-
-
-        
+          docker container prune -f  
