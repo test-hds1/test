@@ -43,8 +43,10 @@ public class OAuth2SuccessHandler extends SimpleUrlAuthenticationSuccessHandler 
 
         if(isExist){
 //            기존 SNS 회원
+            log.info("기존 SNS 회원");
 
         } else{
+            log.info("최초 회원");
             Optional<MemberDTO> foundMember = memberDAO.findMemberByMemberEmail(email);
             if(foundMember.isEmpty()){
 //            신규 회원
