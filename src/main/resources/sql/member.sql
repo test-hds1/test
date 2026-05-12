@@ -1,7 +1,6 @@
 create type status as enum('active', 'inactive', 'deleted');
 create type member_role as enum('admin', 'member');
 create type oauth_provider as enum('kakao', 'naver');
-
 create table tbl_member(
     id bigint generated always as identity primary key,
     member_name varchar(255) not null,
@@ -13,7 +12,6 @@ create table tbl_member(
     created_datetime timestamp default now(),
     updated_datetime timestamp default now()
 );
-
 create table tbl_oauth(
     id bigint generated always as identity primary key,
     provider_id varchar(255) unique not null,
@@ -27,11 +25,6 @@ create table tbl_oauth(
 );
 
 select * from tbl_member;
-select * from tbl_oauth;
-
-delete from tbl_oauth;
-
-
 
 
 

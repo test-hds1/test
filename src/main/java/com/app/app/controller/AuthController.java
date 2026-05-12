@@ -52,6 +52,8 @@ public class AuthController implements AuthControllerDocs {
 
             String accessToken = jwtTokenProvider.createAccessToken(memberDTO.getMemberEmail());
             jwtTokenProvider.createRefreshToken(memberDTO.getMemberEmail());
+            log.info("=======================================들어옴=====================");
+            log.info("accessToken: {}", accessToken);
 
             tokenMap.put("accessToken", accessToken);
 
