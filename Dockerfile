@@ -1,3 +1,20 @@
+# 빌드 할 때에는 jdk 17버전을 사용하겠다.
+FROM eclipse-temurin:17-jdk AS build
+
+# 작업 디렉토리 설정
+WORKDIR /app
+
+# 프로젝트 루트에 있는 파일을 컨테이너 안으로 복사해서 넣기
+COPY . .
+
+# 빌드
+RUN chmod +x ./gradlew && ./gradlew build
+
+# 실행만 담당하는 jre 환경으로 설정한다.
+FROM eclipse-temurin:17-jre
+
+ENV TZ=Asia/Seoul
+
 ARG EC2_HOST
 ENV EC2_HOST=${EC2_HOST}
 
@@ -42,23 +59,6 @@ ENV NAVER_CLIENT_ID=${NAVER_CLIENT_ID}
 
 ARG NAVER_CLIENT_SECRET
 ENV NAVER_CLIENT_SECRET=${NAVER_CLIENT_SECRET}
-
-# 빌드 할 때에는 jdk 17버전을 사용하겠다.
-FROM eclipse-temurin:17-jdk AS build
-
-# 작업 디렉토리 설정
-WORKDIR /app
-
-# 프로젝트 루트에 있는 파일을 컨테이너 안으로 복사해서 넣기
-COPY . .
-
-# 빌드
-RUN chmod +x ./gradlew && ./gradlew build
-
-# 실행만 담당하는 jre 환경으로 설정한다.
-FROM eclipse-temurin:17-jre
-
-ENV TZ=Asia/Seoul
 
 # JAR 파일 복사
 COPY /app/build/libs/app-0.0.1-SNAPSHOT.jar app.jar
