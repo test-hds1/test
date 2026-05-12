@@ -57,6 +57,8 @@ public class JwtTokenProvider {
 
         Cookie accessTokenCookie = new Cookie("accessToken", accessToken);
         accessTokenCookie.setPath("/");
+        accessTokenCookie.setHttpOnly(true);
+        accessTokenCookie.setSecure(false);
         accessTokenCookie.setMaxAge(60 * 60 * 24 * 1);
         response.addCookie(accessTokenCookie);
 
@@ -75,6 +77,8 @@ public class JwtTokenProvider {
                 .compact();
 
         Cookie accessTokenCookie = new Cookie("accessToken", accessToken);
+        accessTokenCookie.setHttpOnly(true);
+        accessTokenCookie.setSecure(false);
         accessTokenCookie.setPath("/");
         accessTokenCookie.setMaxAge(60 * 60 * 24 * 1);
         response.addCookie(accessTokenCookie);
@@ -132,6 +136,8 @@ public class JwtTokenProvider {
         );
 
         Cookie refreshTokenCookie = new Cookie("refreshToken", refreshToken);
+        refreshTokenCookie.setHttpOnly(true);
+        refreshTokenCookie.setSecure(false);
         refreshTokenCookie.setPath("/");
         refreshTokenCookie.setMaxAge(60 * 60 * 24 * 1);
         response.addCookie(refreshTokenCookie);
@@ -157,6 +163,8 @@ public class JwtTokenProvider {
         );
 
         Cookie refreshTokenCookie = new Cookie("refreshToken", refreshToken);
+        refreshTokenCookie.setHttpOnly(true);
+        refreshTokenCookie.setSecure(false);
         refreshTokenCookie.setPath("/");
         refreshTokenCookie.setMaxAge(60 * 60 * 24 * 1);
         response.addCookie(refreshTokenCookie);
